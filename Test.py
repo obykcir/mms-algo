@@ -87,7 +87,7 @@ def MD(src, dst, wall, arr):
     mult = 0
 
     if wall:
-        z = 50
+        z = 100
 
     inArr, mult = searchArr(src, arr)
     
@@ -122,6 +122,11 @@ def nextTurn(current, goal, direction, prevCells):
         mdf = MD(cur_forward, goal, API.wallFront(), prevCells)
         mdr = MD(cur_right, goal, API.wallRight(), prevCells)
 
+        #set MD values for surrounding cells
+        API.setText(cur_left[0], cur_left[1], mdl)
+        API.setText(cur_forward[0], cur_forward[1], mdf)
+        API.setText(cur_right[0], cur_right[1], mdr)
+
         if ((not API.wallLeft()) and mdl <= mdf and mdl <= mdr):
             retDir = goLeft(direction)
             retNode = cur_left
@@ -146,6 +151,11 @@ def nextTurn(current, goal, direction, prevCells):
         mdl = MD(cur_left, goal, API.wallLeft(), prevCells)
         mdf = MD(cur_forward, goal, API.wallFront(), prevCells)
         mdr = MD(cur_right, goal, API.wallRight(), prevCells)
+
+        #set MD values for surrounding cells
+        API.setText(cur_left[0], cur_left[1], mdl)
+        API.setText(cur_forward[0], cur_forward[1], mdf)
+        API.setText(cur_right[0], cur_right[1], mdr)
 
         if ((not API.wallLeft()) and mdl <= mdf and mdl <= mdr):
             retDir = goUp(direction)
@@ -172,6 +182,11 @@ def nextTurn(current, goal, direction, prevCells):
         mdf = MD(cur_forward, goal, API.wallFront(), prevCells)
         mdr = MD(cur_right, goal, API.wallRight(), prevCells)
 
+        #set MD values for surrounding cells
+        API.setText(cur_left[0], cur_left[1], mdl)
+        API.setText(cur_forward[0], cur_forward[1], mdf)
+        API.setText(cur_right[0], cur_right[1], mdr)
+
         if ((not API.wallLeft()) and mdl <= mdf and mdl <= mdr):
             retDir = goRight(direction)
             retNode = cur_left
@@ -196,6 +211,11 @@ def nextTurn(current, goal, direction, prevCells):
         mdl = MD(cur_left, goal, API.wallLeft(), prevCells)
         mdf = MD(cur_forward, goal, API.wallFront(), prevCells)
         mdr = MD(cur_right, goal, API.wallRight(), prevCells)
+
+        #set MD values for surrounding cells
+        API.setText(cur_left[0], cur_left[1], mdl)
+        API.setText(cur_forward[0], cur_forward[1], mdf)
+        API.setText(cur_right[0], cur_right[1], mdr)
 
         if ((not API.wallLeft()) and mdl <= mdf and mdl <= mdr):
             retDir = goDown(direction)
